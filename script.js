@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
     const puzzleGrid = document.getElementById('puzzle-grid');
-    const shuffleBtn = document.getElementById('shuffle-btn');
     const resetBtn = document.getElementById('reset-btn');
     const messageDisplay = document.getElementById('message');
     const imagePath = 'maxresdefault.jpg'; // Make sure this image is in the same folder
@@ -73,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Shuffle the puzzle pieces
+    // Shuffle the puzzle pieces (this function will now be called only once at startup)
     function shufflePieces() {
         do {
             currentOrder = [...solutionOrder];
@@ -81,10 +80,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const j = Math.floor(Math.random() * (i + 1));
                 [currentOrder[i], currentOrder[j]] = [currentOrder[j], currentOrder[i]];
             }
-        } while (isSolved()); // Ensure it's not shuffled into a solved state
-
+        } while (isSolved());
         renderPieces();
-        messageDisplay.classList.add('hidden');
     }
 
     // Reset the puzzle to its solved state
@@ -101,10 +98,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    shuffleBtn.addEventListener('click', shufflePieces);
     resetBtn.addEventListener('click', resetPuzzle);
 
     // Initial setup
     createPieces();
-    resetPuzzle();
+    shufflePieces(); // The game now shuffles automatically on load
 });
