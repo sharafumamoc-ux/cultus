@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const puzzleGrid = document.getElementById('puzzle-grid');
     const resetBtn = document.getElementById('reset-btn');
     const messageDisplay = document.getElementById('message');
-    const imagePath = 'maxresdefault.jpg'; // Make sure this image is in the same folder
+    const imagePath = 'CULTUS.jpeg'; // Make sure this image is in the same folder
 
     let pieces = [];
     const solutionOrder = Array.from({ length: 9 }, (_, i) => i);
@@ -104,3 +104,4 @@ document.addEventListener('DOMContentLoaded', () => {
     createPieces();
     shufflePieces(); // The game now shuffles automatically on load
 });
+
